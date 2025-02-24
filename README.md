@@ -5,10 +5,10 @@ FCFS-OS-Scheduler is an implementation of the First-Come, First-Serve (FCFS) ope
 ## Overview
 
 The FCFS scheduling algorithm is one of the simplest CPU scheduling algorithms where processes are dispatched according to their arrival order. In this project, the scheduler:
-- Accepts process details (arrival time and burst time) via an interactive command-line interface.
+- Accepts process details (arrival time and burst time) from interactive command-line interface.
 - Enqueues processes into a ready queue.
 - Processes the tasks in the order they arrive.
-- Calculates key metrics for each process:
+- Calculate each process:
   - **Waiting Time**
   - **Turnaround Time**
   - **Completion Time**
@@ -19,9 +19,9 @@ This project serves as a practical demonstration of core operating system concep
 
 - **FCFS Scheduling Algorithm**: Executes processes strictly in the order of their arrival.
 - **Custom Data Structures**:
-  - **Process Class**: Encapsulates process attributes like PID, arrival time, burst time, waiting time, turnaround time, and completion time.
-  - **Linked List & Queue**: Uses a custom Queue implemented with a linked list (via the ListNode class) for managing the ready queue.
-  - **Map and Sorted Array**: Groups processes by arrival time and maintains a sorted array for quick lookup.
+  - **Process Class**: take process attributes like PID, arrival time, burst time, waiting time, turnaround time, and completion time.
+  - **Linked List & Queue**: Uses a Queue implemented with a linked list for managing the ready queue.
+  - **Map and Sorted Array**: Groups processes by arrival time and sorted array for quick lookup.
 - **Interactive CLI**: Built with Node.js’s built-in `readline` module, allowing users to input process information and view scheduling results directly in the terminal.
 
 ## Installation
