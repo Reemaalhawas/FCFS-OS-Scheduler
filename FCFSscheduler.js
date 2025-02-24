@@ -8,3 +8,9 @@ class Process {
     this.turnaroundTime = 0;
   }
 }
+class ListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
