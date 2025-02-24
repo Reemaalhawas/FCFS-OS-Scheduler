@@ -20,13 +20,6 @@ class Queue {
     this.tail = null;
     this.length = 0;
   }
-}
-class Queue {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
   enqueue(value) {
     const newNode = new ListNode(value);
     if (!this.head) {
@@ -37,5 +30,16 @@ class Queue {
       this.tail = newNode;
     }
     this.length++;
+  }
+  dequeue() {
+    if (!this.head) return null;
+    const removed = this.head;
+    this.head = this.head.next;
+    if (!this.head) this.tail = null;
+    this.length--;
+    return removed.value;
+  }
+  isEmpty() {
+    return this.length === 0;
   }
 }
