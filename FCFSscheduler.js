@@ -43,7 +43,6 @@ class Queue {
     return this.length === 0;
   }
 }
-
 class ProcessManager {
   constructor(processes) {
     this.processes = processes;
@@ -56,6 +55,14 @@ class ProcessManager {
       this.arrivalMap.get(proc.arrivalTime).push(proc);
     }
     this.sortedArrivalTimes = Array.from(this.arrivalMap.keys()).sort((a, b) => a - b);
+  }
+  simulate() {
+    let currentTime = 0;
+    let scheduledProcesses = [];
+    while (scheduledProcesses.length < this.processes.length) {
+      break;
+    }
+    return scheduledProcesses;
   }
 }
 
