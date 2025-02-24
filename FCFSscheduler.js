@@ -43,6 +43,7 @@ class Queue {
     return this.length === 0;
   }
 }
+
 class ProcessManager {
   constructor(processes) {
     this.processes = processes;
@@ -54,18 +55,7 @@ class ProcessManager {
       }
       this.arrivalMap.get(proc.arrivalTime).push(proc);
     }
-  }
-}class ProcessManager {
-  constructor(processes) {
-    this.processes = processes;
-    this.readyQueue = new Queue();
-    this.arrivalMap = new Map();
-    for (let proc of processes) {
-      if (!this.arrivalMap.has(proc.arrivalTime)) {
-        this.arrivalMap.set(proc.arrivalTime, []);
-      }
-      this.arrivalMap.get(proc.arrivalTime).push(proc);
-    }
+    this.sortedArrivalTimes = Array.from(this.arrivalMap.keys()).sort((a, b) => a - b);
   }
 }
 
