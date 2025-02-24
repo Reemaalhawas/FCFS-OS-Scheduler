@@ -88,3 +88,10 @@ class ProcessManager {
     return scheduledProcesses;
   }
 }
+function askQuestion(query, rl) {
+  return new Promise(resolve => {
+    rl.question(query, answer => {
+      resolve(answer);
+    });
+  });
+}
