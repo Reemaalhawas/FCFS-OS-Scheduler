@@ -76,7 +76,14 @@ class ProcessManager {
           }
         }
       }
-      break;
+      let proc = this.readyQueue.dequeue();
+      if (proc) {
+        proc.waitingTime = currentTime - proc.arrivalTime;
+        currentTime += proc.burstTime;
+        proc.completionTime = currentTime;
+        proc.turnaroundTime = proc.completionTime - proc.arrivalTime;
+        scheduledProcesses.push(proc);
+      }
     }
     return scheduledProcesses;
   }
