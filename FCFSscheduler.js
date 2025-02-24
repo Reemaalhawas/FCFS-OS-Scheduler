@@ -60,10 +60,24 @@ class ProcessManager {
     let currentTime = 0;
     let scheduledProcesses = [];
     while (scheduledProcesses.length < this.processes.length) {
+      if (this.arrivalMap.has(currentTime)) {
+        let arriving = this.arrivalMap.get(currentTime);
+        for (let proc of arriving) {
+          this.readyQueue.enqueue(proc);
+        }
+      }
+      if (this.readyQueue.isEmpty()) {
+        let nextArrival = this.sortedArrivalTimes.find(time => time > currentTime);
+        if (nextArrival !== undefined) {
+          currentTime = nextArrival;
+          let arriving = this.arrivalMap.get(currentTime);
+          for (let proc of arriving) {
+            this.readyQueue.enqueue(proc);
+          }
+        }
+      }
       break;
     }
     return scheduledProcesses;
   }
 }
-
-
