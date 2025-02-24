@@ -1,3 +1,4 @@
+const readline = require('readline');
 class Process {
   constructor(pid, arrivalTime, burstTime) {
     this.pid = pid;
@@ -95,3 +96,27 @@ function askQuestion(query, rl) {
     });
   });
 }
+
+
+
+(async function() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  const numProcesses = parseInt(await askQuestion("Enter the number of processes: ", rl), 10);
+  let processes = [];
+  for (let i = 0; i < numProcesses; i++) {
+    const arrival = parseInt(await askQuestion(`Enter arrival time for process ${i + 1}: `, rl), 10);
+    const burst = parseInt(await askQuestion(`Enter burst time for process ${i + 1}: `, rl), 10);
+    processes.push(new Process(i + 1, arrival, burst));
+  }
+  const manager = new ProcessManager(processes);
+  const scheduled = manager.simulate();
+  console.log("\nScheduling Results:");
+  console.log("PID\tArrival\tBurst\tWaiting\tTurnaround\tCompletion");
+  scheduled.forEach(proc => {
+    console.log(`${proc.pid}\t${proc.arrivalTime}\t${proc.burstTime}\t${proc.waitingTime}\t${proc.turnaroundTime}\t\t${proc.completionTime}`);
+  });
+  rl.close();
+})();
